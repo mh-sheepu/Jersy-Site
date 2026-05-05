@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jersy Site - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Rajdhani:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="home-page">
+    <header class="site-header">
+      <div class="header-left">
+        <button class="nav-toggle" id="navToggle" aria-controls="mobileNav" aria-expanded="false">
+          ☰
+        </button>
+      </div>
+      <div class="brand">JERSY</div>
+      <nav class="main-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" id="cartButton" aria-label="Cart">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              d="M6 6h14l-2 8H8L6 4H3"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <circle cx="9" cy="19" r="1.6" fill="currentColor" />
+            <circle cx="17" cy="19" r="1.6" fill="currentColor" />
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </header>
+
+    <aside class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <div class="mobile-nav-header">
+        <span class="mobile-logo">JERSY</span>
+        <button class="nav-close" id="navClose" aria-label="Close menu">✕</button>
+      </div>
+      <div class="mobile-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html">Admin</a>
+      </div>
+      <div class="mobile-social">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Instagram">i</a>
+        <a href="#" aria-label="YouTube">y</a>
+      </div>
+    </aside>
+
+    <main>
+      <section class="hero">
+        <div class="hero-slider" id="heroSlider" aria-label="Featured collections">
+          <article class="hero-slide is-active">
+            <img
+              src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=1800&q=85"
+              alt="Football collection campaign"
+            />
+            <div class="hero-slide-copy">
+              <h1>FIFA 2026</h1>
+              <p>World Cup Collection</p>
+            </div>
+          </article>
+          <article class="hero-slide">
+            <img
+              src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1800&q=85"
+              alt="New season jersey collection"
+            />
+            <div class="hero-slide-copy">
+              <h1>NEW SEASON</h1>
+              <p>Home, away, and player editions</p>
+            </div>
+          </article>
+          <article class="hero-slide">
+            <img
+              src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1800&q=85"
+              alt="Top selling football kits"
+            />
+            <div class="hero-slide-copy">
+              <h1>TOP KITS</h1>
+              <p>Built for modern fans</p>
+            </div>
+          </article>
+          <button class="hero-arrow hero-arrow-prev" id="heroPrev" aria-label="Previous slide">
+            ‹
+          </button>
+          <button class="hero-arrow hero-arrow-next" id="heroNext" aria-label="Next slide">
+            ›
+          </button>
+          <div class="hero-dots" id="heroDots" aria-label="Choose slide"></div>
+        </div>
+      </section>
+
+      <section class="section" id="categories">
+        <div class="section-header">
+          <h2>Category</h2>
+          <a href="products.html">View all</a>
+        </div>
+        <div class="category-grid" id="categoryGrid"></div>
+      </section>
+
+      <section class="worldcup-banner">
+        <img
+          src="https://images.unsplash.com/photo-1759156207343-9dfefd8b7d33?auto=format&fit=crop&w=1800&q=85"
+          alt="Football stadium crowd"
+        />
+        <div class="worldcup-banner-content">
+          <span>World Cup FIFA 2026</span>
+          <h2>Country Kits Are Landing</h2>
+          <p>National team jerseys, player editions, and match-day essentials for the biggest football stage.</p>
+          <a class="primary-btn" href="products.html">Shop World Cup</a>
+        </div>
+      </section>
+
+      <section class="section" id="topSelling">
+        <div class="section-header">
+          <h2>Top Selling</h2>
+          <a href="products.html">Shop top picks</a>
+        </div>
+        <div class="product-grid" id="topSellingGrid"></div>
+      </section>
+
+      <section class="section" id="fifa2026">
+        <div class="section-header">
+          <h2>FIFA 2026</h2>
+          <a href="products.html">View collection</a>
+        </div>
+        <div class="product-grid" id="fifa2026Grid"></div>
+      </section>
+
+      <section class="visual-section" aria-label="Featured jersey collections">
+        <a class="visual-feature" href="products.html">
+          <img
+            src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1200&q=85"
+            alt="Football players in kit"
+          />
+          <div>
+            <span>Match Ready</span>
+            <h2>Player Edition Kits</h2>
+          </div>
+        </a>
+        <div class="visual-tiles">
+          <a class="visual-tile" href="products.html">
+            <img
+              src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=800&q=85"
+              alt="Football jersey details"
+            />
+            <span>Home Kits</span>
+          </a>
+          <a class="visual-tile" href="products.html">
+            <img
+              src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?auto=format&fit=crop&w=800&q=85"
+              alt="Football stadium"
+            />
+            <span>Away Kits</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="highlight">
+        <div class="highlight-content">
+          <p class="eyebrow">Spotlight</p>
+          <h2>FIFA 2026</h2>
+          <p>
+            A bold new era of football kits. Lightweight mesh, reflective crest, and a
+            silhouette that stands out under the lights.
+          </p>
+          <a class="primary-btn" href="products.html">See the drop</a>
+        </div>
+        <div class="highlight-media">
+          <img
+            src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=900&q=85"
+            alt="Football kit campaign"
+          />
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="section-header">
+          <h2>FAQ</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>How do I choose my size?</summary>
+            <p>Use the size guide on each product page. Player editions run slimmer.</p>
+          </details>
+          <details>
+            <summary>Can I return a jersey?</summary>
+            <p>Returns are accepted within 14 days for unused items.</p>
+          </details>
+          <details>
+            <summary>Do you ship internationally?</summary>
+            <p>Yes, international shipping is available at checkout.</p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo">JERSY</div>
+          <p>Premium football kits built for modern fans.</p>
+          <div class="footer-contact">
+            <span>Rampura, Dhaka, Bangladesh</span>
+            <span>+880 964 292 2922</span>
+            <span>contact@jersy.com</span>
+          </div>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Twitter">t</a>
+            <a href="#" aria-label="Instagram">i</a>
+          </div>
+        </div>
+        <div class="footer-columns">
+          <div>
+            <h4>Information</h4>
+            <a href="products.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="#">Stories</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+          <div>
+            <h4>Shop By</h4>
+            <a href="products.html">Home Kits</a>
+            <a href="products.html">Away Kits</a>
+            <a href="products.html">Third Kits</a>
+            <a href="products.html">Player Edition</a>
+            <a href="products.html">Top Selling</a>
+          </div>
+          <div>
+            <h4>Support</h4>
+            <a href="#">Support Center</a>
+            <a href="#">How to Order</a>
+            <a href="#">Order Tracking</a>
+            <a href="#">Payment</a>
+            <a href="#">Shipping</a>
+            <a href="#faq">FAQ</a>
+          </div>
+          <div>
+            <h4>Consumer Policy</h4>
+            <a href="happy-return.html">Happy Return</a>
+            <a href="refund-policy.html">Refund Policy</a>
+            <a href="exchange.html">Exchange</a>
+            <a href="cancellation.html">Cancellation</a>
+            <a href="pre-order.html">Pre-Order</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+      <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button class="ghost-btn" id="cartClose">Close</button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-summary">
+        <div>Total: <span id="cartTotal">TK 0.00</span></div>
+        <button class="primary-btn" id="checkoutButton">Checkout</button>
+      </div>
+    </aside>
+
+    <div class="modal-backdrop" id="checkoutModal" aria-hidden="true">
+      <div class="modal">
+        <div class="modal-header">
+          <h3>Please fill in the form to order</h3>
+          <button class="nav-close" id="checkoutClose" aria-label="Close">✕</button>
+        </div>
+        <form class="checkout-form">
+          <label>
+            Full Name
+            <input type="text" placeholder="Your name" required />
+          </label>
+          <label>
+            Phone Number
+            <input type="tel" placeholder="Phone number" required />
+          </label>
+          <label>
+            Address
+            <input type="text" placeholder="Your address" required />
+          </label>
+          <label>
+            City
+            <input type="text" placeholder="City" required />
+          </label>
+          <label>
+            Email
+            <input type="email" placeholder="Email" required />
+          </label>
+          <div class="checkout-products" id="checkoutProducts"></div>
+          <div class="checkout-summary">
+            <div>
+              <span>Subtotal</span>
+              <strong id="checkoutSubtotal">TK 0.00</strong>
+            </div>
+            <div>
+              <span>Delivery</span>
+              <strong id="checkoutDelivery">TK 0.00</strong>
+            </div>
+            <div class="checkout-total">
+              <span>Total</span>
+              <strong id="checkoutTotal">TK 0.00</strong>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="primary-btn" type="submit">Place Order</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/products.js"></script>
+  </body>
+</html>

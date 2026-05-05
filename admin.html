@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jersy Site - Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Rajdhani:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-left">
+        <button class="nav-toggle" id="navToggle" aria-controls="mobileNav" aria-expanded="false">
+          ☰
+        </button>
+      </div>
+      <div class="brand">JERSY</div>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html" class="active">Admin</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" id="cartButton" aria-label="Cart">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              d="M6 6h14l-2 8H8L6 4H3"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <circle cx="9" cy="19" r="1.6" fill="currentColor" />
+            <circle cx="17" cy="19" r="1.6" fill="currentColor" />
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </header>
+
+    <aside class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <div class="mobile-nav-header">
+        <span class="mobile-logo">JERSY</span>
+        <button class="nav-close" id="navClose" aria-label="Close menu">✕</button>
+      </div>
+      <div class="mobile-links">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html" class="active">Admin</a>
+      </div>
+      <div class="mobile-social">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Instagram">i</a>
+        <a href="#" aria-label="YouTube">y</a>
+      </div>
+    </aside>
+
+    <main class="admin-page">
+      <section class="section">
+        <div class="section-header">
+          <h1>Upload Product</h1>
+          <div class="status" id="uploadStatus" aria-live="polite"></div>
+        </div>
+        <form class="admin-form" id="productForm">
+          <div class="form-row">
+            <label>
+              Title
+              <input type="text" id="titleInput" required />
+            </label>
+            <label>
+              Price
+              <input type="number" id="priceInput" min="1" step="0.01" required />
+            </label>
+            <label>
+              Category
+              <input type="text" id="categoryInput" placeholder="Club or nation" required />
+            </label>
+            <label>
+              Image URL
+              <input type="url" id="imageInput" placeholder="https://" required />
+            </label>
+          </div>
+          <fieldset class="edition-fieldset">
+            <legend>Editions</legend>
+            <label><input type="checkbox" value="Home Kit" /> Home Kit</label>
+            <label><input type="checkbox" value="Away Kit" /> Away Kit</label>
+            <label><input type="checkbox" value="Third Kit" /> Third Kit</label>
+            <label><input type="checkbox" value="Player Edition" /> Player Edition</label>
+          </fieldset>
+          <label class="checkbox-inline">
+            <input type="checkbox" id="topSellingInput" /> Mark as Top Selling
+          </label>
+          <div class="form-actions">
+            <button class="primary-btn" type="submit" id="saveButton">Add product</button>
+            <button class="ghost-btn" type="button" id="cancelEdit" hidden>Cancel edit</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h2>Manage Products</h2>
+          <div class="muted" id="productCount"></div>
+        </div>
+        <div class="table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Editions</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo">JERSY</div>
+          <p>Premium football kits built for modern fans.</p>
+          <div class="footer-contact">
+            <span>Rampura, Dhaka, Bangladesh</span>
+            <span>+880 964 292 2922</span>
+            <span>contact@jersy.com</span>
+          </div>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Twitter">t</a>
+            <a href="#" aria-label="Instagram">i</a>
+          </div>
+        </div>
+        <div class="footer-columns">
+          <div>
+            <h4>Information</h4>
+            <a href="products.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="#">Stories</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+          <div>
+            <h4>Shop By</h4>
+            <a href="products.html">Home Kits</a>
+            <a href="products.html">Away Kits</a>
+            <a href="products.html">Third Kits</a>
+            <a href="products.html">Player Edition</a>
+            <a href="products.html">Top Selling</a>
+          </div>
+          <div>
+            <h4>Support</h4>
+            <a href="#">Support Center</a>
+            <a href="#">How to Order</a>
+            <a href="#">Order Tracking</a>
+            <a href="#">Payment</a>
+            <a href="#">Shipping</a>
+            <a href="#">FAQ</a>
+          </div>
+          <div>
+            <h4>Consumer Policy</h4>
+            <a href="happy-return.html">Happy Return</a>
+            <a href="refund-policy.html">Refund Policy</a>
+            <a href="exchange.html">Exchange</a>
+            <a href="cancellation.html">Cancellation</a>
+            <a href="pre-order.html">Pre-Order</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+      <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button class="ghost-btn" id="cartClose">Close</button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-summary">
+        <div>Total: <span id="cartTotal">TK 0.00</span></div>
+        <button class="primary-btn" id="checkoutButton">Checkout</button>
+      </div>
+    </aside>
+
+    <div class="modal-backdrop" id="checkoutModal" aria-hidden="true">
+      <div class="modal">
+        <div class="modal-header">
+          <h3>Please fill in the form to order</h3>
+          <button class="nav-close" id="checkoutClose" aria-label="Close">✕</button>
+        </div>
+        <form class="checkout-form">
+          <label>
+            Full Name
+            <input type="text" placeholder="Your name" required />
+          </label>
+          <label>
+            Phone Number
+            <input type="tel" placeholder="Phone number" required />
+          </label>
+          <label>
+            Address
+            <input type="text" placeholder="Your address" required />
+          </label>
+          <label>
+            City
+            <input type="text" placeholder="City" required />
+          </label>
+          <label>
+            Email
+            <input type="email" placeholder="Email" required />
+          </label>
+          <div class="checkout-products" id="checkoutProducts"></div>
+          <div class="checkout-summary">
+            <div>
+              <span>Subtotal</span>
+              <strong id="checkoutSubtotal">TK 0.00</strong>
+            </div>
+            <div>
+              <span>Delivery</span>
+              <strong id="checkoutDelivery">TK 0.00</strong>
+            </div>
+            <div class="checkout-total">
+              <span>Total</span>
+              <strong id="checkoutTotal">TK 0.00</strong>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="primary-btn" type="submit">Place Order</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/admin.js"></script>
+  </body>
+</html>
