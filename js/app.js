@@ -109,15 +109,23 @@ function formatPrice(value) {
   return `TK ${amount.toFixed(2)}`;
 }
 
-function getStrikePrice(value) {
+function getStrikePrice(value, compareValue) {
   const parsed = Number(String(value || "").replace(/[^0-9.]/g, ""));
   const amount = Number.isFinite(parsed) ? parsed : 0;
+  const compareParsed = Number(String(compareValue || "").replace(/[^0-9.]/g, ""));
+  const compareAmount = Number.isFinite(compareParsed) ? compareParsed : 0;
+  if (compareAmount > amount) {
+    return Math.round(compareAmount);
+  }
   const strike = amount * 1.25;
   return Math.round(strike);
 }
 
-function getDiscountLabel(value) {
-  const strike = getStrikePrice(value);
+function getDiscountLabel(value, compareValue) {
+  const strike = getStrikePrice(value, compareValue);
+  if (!strike || strike <= value) {
+    return "0% OFF";
+  }
   const percent = Math.round((1 - value / strike) * 100);
   return `${percent}% OFF`;
 }
@@ -335,8 +343,8 @@ function renderFifa2026() {
 function renderProductCards(grid, products) {
   grid.innerHTML = "";
   products.forEach((product) => {
-    const strike = getStrikePrice(product.price);
-    const badge = getDiscountLabel(product.price);
+    const strike = getStrikePrice(product.price, product.comparePrice);
+    const badge = getDiscountLabel(product.price, product.comparePrice);
     const images = getProductImages(product);
     const imageControls = images.length > 1
       ? `<div class="product-image-controls" aria-label="Choose image for ${product.title}">

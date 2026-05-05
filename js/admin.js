@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("productForm");
   const titleInput = document.getElementById("titleInput");
   const priceInput = document.getElementById("priceInput");
+  const comparePriceInput = document.getElementById("comparePriceInput");
   const categoryInput = document.getElementById("categoryInput");
   const imageInput = document.getElementById("imageInput");
   const imageInput2 = document.getElementById("imageInput2");
@@ -48,11 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
     products.forEach((product) => {
       const row = document.createElement("tr");
       row.innerHTML = `
-        <td>${product.title}</td>
-        <td>TK ${product.price.toFixed(2)}</td>
-        <td>${product.category}</td>
-        <td>${product.editions.join(", ")}</td>
-        <td>
+        <td data-label="Title">${product.title}</td>
+        <td data-label="Price">TK ${product.price.toFixed(2)}</td>
+        <td data-label="Category">${product.category}</td>
+        <td data-label="Editions">${product.editions.join(", ")}</td>
+        <td data-label="Actions" class="admin-actions-cell">
           <button class="ghost-btn" data-edit="${product.id}">Edit</button>
           <button class="ghost-btn" data-delete="${product.id}">Delete</button>
         </td>
@@ -76,6 +77,11 @@ document.addEventListener("DOMContentLoaded", () => {
     editingId = id;
     titleInput.value = product.title;
     priceInput.value = product.price;
+    if (comparePriceInput) {
+      comparePriceInput.value = Number.isFinite(product.comparePrice)
+        ? product.comparePrice
+        : "";
+    }
     categoryInput.value = product.category;
     const images = Array.isArray(product.images) && product.images.length > 0
       ? product.images
@@ -107,6 +113,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const products = loadProducts();
     const editions = getEditions();
+    const compareValue = comparePriceInput ? comparePriceInput.value.trim() : "";
+    const comparePrice = compareValue ? Number(compareValue) : null;
     const images = [imageInput.value, imageInput2.value, imageInput3.value]
       .map((value) => value.trim())
       .filter(Boolean);
@@ -119,6 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: editingId || `${titleInput.value.toLowerCase().replace(/\s+/g, "-")}-${Date.now()}`,
       title: titleInput.value.trim(),
       price: Number(priceInput.value),
+      comparePrice,
       category: categoryInput.value.trim(),
       editions,
       image: images[0],

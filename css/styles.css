@@ -241,7 +241,6 @@ a {
 }
 
 .mobile-social {
-  margin-top: auto;
   display: flex;
   gap: 12px;
 }
@@ -256,6 +255,17 @@ a {
   color: #141414;
   border: 1px solid #e9e2cd;
   font-weight: 700;
+}
+
+.mobile-nav-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #ececec;
+  color: #6c624e;
+  font-size: 12px;
+  text-align: center;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
 }
 
 .breadcrumb {
@@ -1617,10 +1627,25 @@ a {
   gap: 8px;
 }
 
-.checkbox-inline {
-  display: flex;
+.edition-fieldset label {
+  display: grid;
+  grid-template-columns: 20px 1fr;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  text-align: left;
+}
+
+.edition-fieldset input[type="checkbox"] {
+  margin: 0;
+  justify-self: start;
+}
+
+.checkbox-inline {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
 }
 
 .form-actions {
@@ -1901,6 +1926,60 @@ a {
   .whatsapp-float svg {
     width: 28px;
     height: 28px;
+  }
+
+  .table-wrapper {
+    overflow-x: visible;
+  }
+
+  .admin-table {
+    min-width: 0;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+  }
+
+  .admin-table thead {
+    display: none;
+  }
+
+  .admin-table tr {
+    display: grid;
+    gap: 8px;
+    padding: 10px 12px;
+    border: 1px solid rgba(147, 125, 14, 0.18);
+    border-radius: 12px;
+    background: #fff7e8;
+    box-shadow: 0 10px 24px rgba(33, 29, 20, 0.08);
+  }
+
+  .admin-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 0;
+    border-bottom: 0;
+    font-size: 14px;
+  }
+
+  .admin-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #4e4738;
+  }
+
+  .admin-actions-cell {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .admin-actions-cell::before {
+    width: 100%;
+  }
+
+  .admin-actions-cell .ghost-btn {
+    min-width: 92px;
   }
 
   .breadcrumb {

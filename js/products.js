@@ -94,8 +94,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const editions = Array.isArray(product.editions) && product.editions.length > 0
         ? product.editions
         : ["Home Kit"];
-      const strike = getStrikePrice(price);
-      const badge = getDiscountLabel(price);
+      const strike = getStrikePrice(price, product.comparePrice);
+      const badge = getDiscountLabel(price, product.comparePrice);
       const images = getProductImages(product);
       const imageControls = images.length > 1
         ? `<div class="product-image-controls" aria-label="Choose image for ${product.title}">
