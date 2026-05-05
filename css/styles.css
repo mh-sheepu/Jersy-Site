@@ -262,6 +262,26 @@ a {
   display: none;
 }
 
+.whatsapp-float {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 24;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #25d366;
+  color: #ffffff;
+  box-shadow: 0 16px 34px rgba(37, 211, 102, 0.32);
+}
+
+.whatsapp-float svg {
+  width: 31px;
+  height: 31px;
+}
+
 .cart-count {
   min-width: 20px;
   height: 20px;
@@ -1709,6 +1729,18 @@ a {
     color: #ffffff;
     font-size: 12px;
     box-shadow: 0 2px 8px rgba(75, 155, 216, 0.35);
+  }
+
+  .whatsapp-float {
+    right: 16px;
+    bottom: 84px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .whatsapp-float svg {
+    width: 28px;
+    height: 28px;
   }
 
   .breadcrumb {
