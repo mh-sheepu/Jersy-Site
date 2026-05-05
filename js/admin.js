@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  if (!window.JerseyStore) return;
+  if (!window.VoidApparelStore) return;
 
-  const { loadProducts, saveProducts } = window.JerseyStore;
+  const { loadProducts, saveProducts } = window.VoidApparelStore;
 
   const form = document.getElementById("productForm");
   const titleInput = document.getElementById("titleInput");

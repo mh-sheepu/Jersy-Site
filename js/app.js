@@ -427,7 +427,7 @@ function setupHeroSlider() {
   startAutoplay();
 }
 
-window.JerseyStore = {
+window.VoidApparelStore = {
   loadProducts,
   saveProducts,
   getCategories,

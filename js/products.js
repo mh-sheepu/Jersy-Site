@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  if (!window.JerseyStore) return;
+  if (!window.VoidApparelStore) return;
 
   const {
     loadProducts,
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     getDiscountLabel,
     addToCart,
     updateCartUI
-  } = window.JerseyStore;
+  } = window.VoidApparelStore;
 
   const grid = document.getElementById("productGrid");
   const resultsCount = document.getElementById("resultsCount");
