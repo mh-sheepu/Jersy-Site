@@ -1508,6 +1508,12 @@ a {
   padding: 40px;
 }
 
+.admin-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .admin-form {
   display: grid;
   gap: 16px;
@@ -1565,6 +1571,67 @@ a {
   min-height: 100vh;
   margin: 0 auto;
   padding: 64px 24px;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.login-panel {
+  width: min(100%, 440px);
+  display: grid;
+  gap: 22px;
+  padding: 34px;
+  border: 1px solid rgba(147, 125, 14, 0.18);
+  border-radius: 8px;
+  background: #fff7e8;
+  box-shadow: 0 24px 70px rgba(33, 29, 20, 0.12);
+}
+
+.login-panel span {
+  color: #937d0e;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.login-panel h1 {
+  margin-top: 10px;
+  font-family: "Oswald", sans-serif;
+  font-size: 42px;
+  color: #211d14;
+  text-transform: uppercase;
+}
+
+.login-form {
+  display: grid;
+  gap: 14px;
+}
+
+.login-form label {
+  display: grid;
+  gap: 6px;
+  color: #4e4738;
+  font-weight: 700;
+}
+
+.login-form input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid rgba(147, 125, 14, 0.25);
+  border-radius: 8px;
+  background: #fffaf0;
+  color: #211d14;
+}
+
+.login-home-link {
+  color: #937d0e;
+  font-weight: 700;
+  text-align: center;
 }
 
 .simple-panel {

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VoidApparelCo - Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Rajdhani:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <main class="login-page">
+      <section class="login-panel">
+        <div>
+          <span>VoidApparelCo</span>
+          <h1>Admin Login</h1>
+        </div>
+        <form class="login-form" id="loginForm">
+          <label>
+            Username
+            <input type="text" id="usernameInput" autocomplete="username" required />
+          </label>
+          <label>
+            Password
+            <input type="password" id="passwordInput" autocomplete="current-password" required />
+          </label>
+          <button class="primary-btn" type="submit">Login</button>
+          <div class="status" id="loginStatus" aria-live="polite"></div>
+        </form>
+        <a class="login-home-link" href="index.html">Back to home</a>
+      </section>
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script src="js/clean-url.js"></script>
+  </body>
+</html>
