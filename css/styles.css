@@ -799,7 +799,7 @@ a {
 .visual-tile {
   position: relative;
   overflow: hidden;
-  min-height: 280px;
+  min-height: 160px;
   color: #ffffff;
   background: #211d14;
 }
