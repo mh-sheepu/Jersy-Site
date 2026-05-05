@@ -51,6 +51,77 @@ a {
   text-decoration: none;
 }
 
+.announcement-bar {
+  background: #0f0d09;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 14px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(215, 185, 40, 0.2);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.announcement-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  white-space: nowrap;
+  animation: announcement-marquee 20s linear infinite;
+  gap: 0;
+  will-change: transform;
+}
+
+.announcement-group {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.announcement-group span {
+  padding: 0 18px;
+}
+
+.announcement-group span::after {
+  content: "•";
+  margin-left: 18px;
+  color: rgba(215, 185, 40, 0.9);
+}
+
+.announcement-group span:last-child::after {
+  content: "";
+  margin: 0;
+}
+
+@keyframes announcement-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .announcement-track {
+    animation: none;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .announcement-group {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .announcement-group span::after {
+    content: "";
+    margin: 0;
+  }
+}
+
 .site-header {
   display: grid;
   grid-template-columns: minmax(120px, 1fr) auto minmax(120px, 1fr);
@@ -804,8 +875,21 @@ a {
   background: #211d14;
 }
 
+.visual-tile img {
+  filter: brightness(0.96) contrast(1.02);
+}
+
 .visual-feature {
-  min-height: 520px;
+  min-height: 440px;
+}
+
+.visual-tiles {
+  display: grid;
+  gap: 18px;
+}
+
+.visual-tile {
+  aspect-ratio: 4 / 3;
 }
 
 .visual-feature img,
@@ -821,7 +905,7 @@ a {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.62));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.45));
 }
 
 .visual-feature:hover img,
@@ -1988,9 +2072,17 @@ a {
     padding: 20px;
   }
 
+  .visual-tiles {
+    grid-template-columns: 1fr;
+  }
+
   .visual-feature,
   .visual-tile {
-    min-height: 260px;
+    min-height: 220px;
+  }
+
+  .visual-tile {
+    aspect-ratio: 16 / 10;
   }
 
   .worldcup-banner {
