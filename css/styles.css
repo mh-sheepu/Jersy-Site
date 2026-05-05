@@ -265,11 +265,11 @@ a {
 .whatsapp-float {
   position: fixed;
   right: 22px;
-  bottom: 22px;
+  bottom: 120px;
   z-index: 24;
   width: 58px;
   height: 58px;
-  display: none;
+  display: grid;
   place-items: center;
   border-radius: 50%;
   background: #25d366;
