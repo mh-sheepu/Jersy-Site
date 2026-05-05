@@ -187,6 +187,37 @@ a {
   font-weight: 700;
 }
 
+.breadcrumb {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 18px 40px 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #6c624e;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.breadcrumb a {
+  color: #937d0e;
+}
+
+.breadcrumb span {
+  color: #211d14;
+}
+
+.breadcrumb a::after {
+  content: "/";
+  margin-left: 9px;
+  color: rgba(33, 29, 20, 0.36);
+}
+
+.breadcrumb-simple {
+  padding: 0;
+  margin-bottom: 20px;
+}
+
 .main-nav a.active {
   color: #fff7d6;
 }
@@ -1369,14 +1400,6 @@ a {
   padding: 64px 24px;
 }
 
-.back-link {
-  display: inline-block;
-  margin-bottom: 20px;
-  color: #8f790b;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
 .simple-panel {
   padding: 44px;
   background: #fff7e8;
@@ -1475,11 +1498,20 @@ a {
 
 @media (max-width: 640px) {
   .site-header,
+  .breadcrumb,
   .section,
   .product-page,
   .contact-page,
   .admin-page {
     padding: 16px;
+  }
+
+  .breadcrumb {
+    padding-bottom: 0;
+  }
+
+  .breadcrumb-simple {
+    padding: 0;
   }
 
   .brand {
