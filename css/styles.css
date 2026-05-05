@@ -974,6 +974,37 @@ a {
   font-size: 14px;
 }
 
+.contact-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(215, 185, 40, 0.16);
+  color: #d7b928;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.location-icon::before {
+  content: "⌖";
+}
+
+.phone-icon::before {
+  content: "☎";
+}
+
+.mail-icon::before {
+  content: "@";
+}
+
 .footer-social {
   display: flex;
   gap: 10px;
