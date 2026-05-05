@@ -1384,6 +1384,50 @@ a {
     gap: 6px;
   }
 
+  .category-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .category-card {
+    min-height: 112px;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-content: center;
+    gap: 9px;
+    padding: 12px 6px;
+    text-align: center;
+  }
+
+  .category-card::before {
+    inset: -42px auto auto -42px;
+    width: 96px;
+    height: 96px;
+  }
+
+  .category-card::after {
+    inset: auto -36px -44px auto;
+    width: 92px;
+    height: 92px;
+  }
+
+  .category-crest {
+    width: 44px;
+    height: 44px;
+    font-size: 12px;
+  }
+
+  .category-name {
+    max-width: 100%;
+    font-size: 12px;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+  }
+
+  .category-meta {
+    display: none;
+  }
+
   .visual-section {
     grid-template-columns: 1fr;
     padding: 20px;
