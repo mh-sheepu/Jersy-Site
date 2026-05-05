@@ -158,6 +158,28 @@
 
       <section class="section">
         <div class="section-header">
+          <h2>Delivery Charges</h2>
+          <div class="status" id="deliveryStatus" aria-live="polite"></div>
+        </div>
+        <form class="admin-form" id="deliveryForm">
+          <div class="form-row">
+            <label>
+              Inside Dhaka
+              <input type="number" id="insideDhakaCharge" min="0" step="1" />
+            </label>
+            <label>
+              Outside Dhaka
+              <input type="number" id="outsideDhakaCharge" min="0" step="1" />
+            </label>
+          </div>
+          <div class="form-actions">
+            <button class="primary-btn" type="submit">Save delivery charges</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
           <h2>Manage Products</h2>
           <div class="muted" id="productCount"></div>
         </div>
@@ -272,6 +294,13 @@
           <label>
             Email
             <input type="email" placeholder="Email" required />
+          </label>
+          <label>
+            Delivery Area
+            <select id="deliveryOption">
+              <option value="inside">Inside Dhaka</option>
+              <option value="outside">Outside Dhaka</option>
+            </select>
           </label>
           <div class="checkout-products" id="checkoutProducts"></div>
           <div class="checkout-summary">

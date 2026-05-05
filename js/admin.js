@@ -1,7 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   if (!window.VoidApparelStore) return;
 
-  const { loadProducts, saveProducts } = window.VoidApparelStore;
+  const {
+    loadProducts,
+    saveProducts,
+    loadDeliveryCharges,
+    saveDeliveryCharges
+  } = window.VoidApparelStore;
 
   const form = document.getElementById("productForm");
   const titleInput = document.getElementById("titleInput");
@@ -17,6 +22,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const tableBody = document.getElementById("adminTableBody");
   const uploadStatus = document.getElementById("uploadStatus");
   const productCount = document.getElementById("productCount");
+  const deliveryForm = document.getElementById("deliveryForm");
+  const insideDhakaCharge = document.getElementById("insideDhakaCharge");
+  const outsideDhakaCharge = document.getElementById("outsideDhakaCharge");
+  const deliveryStatus = document.getElementById("deliveryStatus");
 
   if (!form || !tableBody) return;
 
@@ -38,6 +47,14 @@ document.addEventListener("DOMContentLoaded", () => {
     uploadStatus.textContent = message;
     setTimeout(() => {
       uploadStatus.textContent = "";
+    }, 2500);
+  };
+
+  const showDeliveryStatus = (message) => {
+    if (!deliveryStatus) return;
+    deliveryStatus.textContent = message;
+    setTimeout(() => {
+      deliveryStatus.textContent = "";
     }, 2500);
   };
 
@@ -152,4 +169,19 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   renderTable();
+
+  if (deliveryForm && insideDhakaCharge && outsideDhakaCharge && loadDeliveryCharges) {
+    const charges = loadDeliveryCharges();
+    insideDhakaCharge.value = charges.insideDhaka;
+    outsideDhakaCharge.value = charges.outsideDhaka;
+
+    deliveryForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!saveDeliveryCharges) return;
+      const inside = Number(insideDhakaCharge.value) || 0;
+      const outside = Number(outsideDhakaCharge.value) || 0;
+      saveDeliveryCharges({ insideDhaka: inside, outsideDhaka: outside });
+      showDeliveryStatus("Delivery charges saved");
+    });
+  }
 });

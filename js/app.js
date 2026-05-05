@@ -1,5 +1,11 @@
 const STORAGE_KEY = "jerseyProducts";
 const CART_KEY = "jerseyCart";
+const DELIVERY_KEY = "jerseyDeliveryCharges";
+
+const DEFAULT_DELIVERY_CHARGES = {
+  insideDhaka: 60,
+  outsideDhaka: 120
+};
 
 const DEFAULT_PRODUCTS = [
   {
@@ -143,6 +149,28 @@ function saveCart(cart) {
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
 
+function loadDeliveryCharges() {
+  const stored = localStorage.getItem(DELIVERY_KEY);
+  if (!stored) {
+    localStorage.setItem(DELIVERY_KEY, JSON.stringify(DEFAULT_DELIVERY_CHARGES));
+    return { ...DEFAULT_DELIVERY_CHARGES };
+  }
+  try {
+    const parsed = JSON.parse(stored) || {};
+    return {
+      insideDhaka: Number(parsed.insideDhaka) || DEFAULT_DELIVERY_CHARGES.insideDhaka,
+      outsideDhaka: Number(parsed.outsideDhaka) || DEFAULT_DELIVERY_CHARGES.outsideDhaka
+    };
+  } catch (error) {
+    localStorage.setItem(DELIVERY_KEY, JSON.stringify(DEFAULT_DELIVERY_CHARGES));
+    return { ...DEFAULT_DELIVERY_CHARGES };
+  }
+}
+
+function saveDeliveryCharges(charges) {
+  localStorage.setItem(DELIVERY_KEY, JSON.stringify(charges));
+}
+
 function addToCart(productId, edition) {
   const products = loadProducts();
   const product = products.find((item) => item.id === productId);
@@ -239,7 +267,9 @@ function setupCheckoutModal() {
   const form = modal ? modal.querySelector(".checkout-form") : null;
   const checkoutProducts = document.getElementById("checkoutProducts");
   const subtotalEl = document.getElementById("checkoutSubtotal");
+  const deliveryEl = document.getElementById("checkoutDelivery");
   const totalEl = document.getElementById("checkoutTotal");
+  const deliverySelect = document.getElementById("deliveryOption");
   if (!modal || !openButton || !closeButton) return;
 
   const updateTotals = () => {
@@ -270,8 +300,16 @@ function setupCheckoutModal() {
     if (checkoutProducts && cart.length === 0) {
       checkoutProducts.innerHTML = `<div class="checkout-empty">Your cart is empty.</div>`;
     }
+    const charges = loadDeliveryCharges();
+    const area = deliverySelect ? deliverySelect.value : "inside";
+    const deliveryFee = cart.length === 0
+      ? 0
+      : area === "outside"
+        ? charges.outsideDhaka
+        : charges.insideDhaka;
     if (subtotalEl) subtotalEl.textContent = formatPrice(subtotal);
-    if (totalEl) totalEl.textContent = formatPrice(subtotal);
+    if (deliveryEl) deliveryEl.textContent = formatPrice(deliveryFee);
+    if (totalEl) totalEl.textContent = formatPrice(subtotal + deliveryFee);
   };
 
   const openModal = () => {
@@ -287,6 +325,9 @@ function setupCheckoutModal() {
 
   openButton.addEventListener("click", openModal);
   closeButton.addEventListener("click", closeModal);
+  if (deliverySelect) {
+    deliverySelect.addEventListener("change", updateTotals);
+  }
   modal.addEventListener("click", (event) => {
     if (event.target === modal) closeModal();
   });
@@ -496,6 +537,8 @@ function setupHeroSlider() {
 window.VoidApparelStore = {
   loadProducts,
   saveProducts,
+  loadDeliveryCharges,
+  saveDeliveryCharges,
   getCategories,
   getProductImages,
   formatPrice,
