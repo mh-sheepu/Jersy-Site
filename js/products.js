@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const priceRange = document.getElementById("priceRange");
   const priceValue = document.getElementById("priceValue");
   const clearFilters = document.getElementById("clearFilters");
+  const filterToggle = document.getElementById("filterToggle");
+  const filters = document.getElementById("filters");
 
   if (!grid || !categoryFilters) return;
 
@@ -153,6 +155,13 @@ document.addEventListener("DOMContentLoaded", () => {
     priceValue.textContent = formatPrice(highestPrice);
     renderProducts();
   });
+
+  if (filterToggle && filters) {
+    filterToggle.addEventListener("click", () => {
+      const isOpen = filters.classList.toggle("is-open");
+      filterToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+  }
 
   attachFilterListeners();
   renderProducts();
