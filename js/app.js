@@ -177,13 +177,17 @@ function updateCartUI() {
   cart.forEach((item) => {
     const product = products.find((p) => p.id === item.id);
     if (!product) return;
+    const productImages = getProductImages(product);
     total += product.price * item.qty;
     const row = document.createElement("div");
     row.className = "cart-item";
     row.innerHTML = `
-      <strong>${product.title}</strong>
-      <span>${item.edition}</span>
-      <span>${item.qty} x ${formatPrice(product.price)}</span>
+      <img src="${productImages[0]}" alt="${product.title}" />
+      <div class="cart-item-details">
+        <strong>${product.title}</strong>
+        <span>${item.edition}</span>
+        <span>${item.qty} x ${formatPrice(product.price)}</span>
+      </div>
       <button class="ghost-btn" data-remove="${item.key}">Remove</button>
     `;
     cartItems.appendChild(row);

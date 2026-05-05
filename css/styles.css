@@ -1028,9 +1028,28 @@ a {
   padding: 14px;
   border-radius: 14px;
   display: grid;
-  gap: 6px;
+  grid-template-columns: 82px 1fr;
+  gap: 12px;
   border: 1px solid #e5ddc8;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.cart-item img {
+  width: 82px;
+  height: 92px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #ece5d2;
+}
+
+.cart-item-details {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+}
+
+.cart-item .ghost-btn {
+  grid-column: 1 / -1;
 }
 
 .cart-summary {
