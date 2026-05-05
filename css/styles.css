@@ -950,6 +950,21 @@ a {
   margin-bottom: 8px;
 }
 
+.footer-credit {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 16px 40px 22px;
+  border-top: 1px solid rgba(215, 185, 40, 0.12);
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 14px;
+  text-align: center;
+}
+
+.footer-credit a {
+  color: #d7b928;
+  font-weight: 700;
+}
+
 .cart-drawer {
   position: fixed;
   top: 0;
@@ -1376,6 +1391,10 @@ a {
   .footer-inner {
     grid-template-columns: 1fr;
     padding: 36px 20px;
+  }
+
+  .footer-credit {
+    padding: 16px 20px 22px;
   }
 
   .section-header {
