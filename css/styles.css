@@ -1227,6 +1227,11 @@ a {
   font-size: 14px;
 }
 
+#categoryFilters {
+  display: grid;
+  gap: 10px;
+}
+
 .filter-block label {
   display: flex;
   gap: 8px;
@@ -1422,10 +1427,11 @@ a {
 
   .product-page {
     grid-template-columns: 1fr;
+    gap: 18px;
   }
 
   .filters {
-    width: min(100%, 320px);
+    width: min(100%, 640px);
     justify-self: center;
   }
 }
@@ -1436,7 +1442,7 @@ a {
   .product-page,
   .contact-page,
   .admin-page {
-    padding: 20px;
+    padding: 16px;
   }
 
   .brand {
@@ -1493,6 +1499,48 @@ a {
     align-items: flex-start;
     flex-direction: column;
     gap: 6px;
+  }
+
+  .product-page {
+    gap: 16px;
+  }
+
+  .product-list .section-header {
+    flex-direction: row;
+    align-items: baseline;
+  }
+
+  .filters {
+    width: 100%;
+    padding: 20px 16px;
+    gap: 18px;
+    border-radius: 16px;
+  }
+
+  .filters h2 {
+    font-size: 24px;
+  }
+
+  .filter-block {
+    gap: 10px;
+  }
+
+  #categoryFilters,
+  .edition-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .filter-block h3 {
+    grid-column: 1 / -1;
+  }
+
+  .filter-block label {
+    min-height: 28px;
+    font-size: 13px;
+  }
+
+  .filters .ghost-btn {
+    min-height: 46px;
   }
 
   .category-grid {
@@ -1560,7 +1608,7 @@ a {
 
   .product-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
+    gap: 12px;
   }
 
   #topSellingGrid,
@@ -1574,12 +1622,12 @@ a {
   }
 
   .product-card {
-    padding: 0 10px 12px;
+    padding: 0 8px 12px;
     gap: 7px;
   }
 
   .product-image {
-    margin: 0 -10px 4px;
+    margin: 0 -8px 4px;
   }
 
   .product-card img {
@@ -1596,6 +1644,7 @@ a {
   .product-card h3 {
     font-size: 14px;
     margin: 0 0 4px;
+    min-height: 36px;
   }
 
   .price-old {
@@ -1618,5 +1667,29 @@ a {
     padding: 10px 8px;
     font-size: 12px;
     letter-spacing: 0.6px;
+  }
+
+  .cart-drawer {
+    width: 100%;
+    padding: 18px;
+  }
+}
+
+@media (max-width: 380px) {
+  .product-grid {
+    gap: 10px;
+  }
+
+  .product-card h3 {
+    font-size: 13px;
+  }
+
+  .product-card img {
+    height: 118px;
+  }
+
+  .edition-select,
+  .full-btn {
+    font-size: 11px;
   }
 }
