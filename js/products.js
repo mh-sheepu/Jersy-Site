@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const {
     loadProducts,
     getCategories,
+    getProductImages,
     formatPrice,
     getStrikePrice,
     getDiscountLabel,
@@ -81,6 +82,17 @@ document.addEventListener("DOMContentLoaded", () => {
         : ["Home Kit"];
       const strike = getStrikePrice(price);
       const badge = getDiscountLabel(price);
+      const images = getProductImages(product);
+      const imageControls = images.length > 1
+        ? `<div class="product-image-controls" aria-label="Choose image for ${product.title}">
+            ${images
+              .map(
+                (image, index) =>
+                  `<button type="button" class="product-image-dot${index === 0 ? " is-active" : ""}" data-image="${image}" aria-label="Show image ${index + 1}"></button>`
+              )
+              .join("")}
+          </div>`
+        : "";
       const card = document.createElement("div");
       card.className = "product-card";
       const editionOptions = editions
@@ -88,8 +100,9 @@ document.addEventListener("DOMContentLoaded", () => {
         .join("");
       card.innerHTML = `
         <div class="product-image">
-          <img src="${product.image}" alt="${product.title}" />
+          <img src="${images[0]}" alt="${product.title}" />
           <span class="product-badge">${badge}</span>
+          ${imageControls}
         </div>
         <h3 class="product-title">${product.title}</h3>
         <div class="price-old">${formatPrice(strike)}</div>
@@ -107,6 +120,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const edition = button.parentElement.querySelector(".edition-select").value;
         addToCart(button.dataset.add, edition);
         updateCartUI();
+      });
+    });
+
+    grid.querySelectorAll(".product-image-dot").forEach((button) => {
+      button.addEventListener("click", () => {
+        const card = button.closest(".product-card");
+        const image = card.querySelector(".product-image img");
+        image.src = button.dataset.image;
+        card.querySelectorAll(".product-image-dot").forEach((dot) => {
+          dot.classList.toggle("is-active", dot === button);
+        });
       });
     });
   };

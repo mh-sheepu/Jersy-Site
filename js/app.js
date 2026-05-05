@@ -9,6 +9,9 @@ const DEFAULT_PRODUCTS = [
     category: "Arsenal",
     editions: ["Home Kit", "Player Edition"],
     image: "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=800&q=80"
+    ],
     topSelling: true
   },
   {
@@ -18,6 +21,9 @@ const DEFAULT_PRODUCTS = [
     category: "Madrid",
     editions: ["Away Kit"],
     image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80"
+    ],
     topSelling: true
   },
   {
@@ -27,6 +33,9 @@ const DEFAULT_PRODUCTS = [
     category: "Brazil",
     editions: ["Home Kit", "Player Edition"],
     image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80"
+    ],
     topSelling: false
   },
   {
@@ -36,6 +45,9 @@ const DEFAULT_PRODUCTS = [
     category: "Barcelona",
     editions: ["Third Kit"],
     image: "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=800&q=80"
+    ],
     topSelling: false
   },
   {
@@ -45,6 +57,9 @@ const DEFAULT_PRODUCTS = [
     category: "Juventus",
     editions: ["Home Kit", "Away Kit"],
     image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80"
+    ],
     topSelling: true
   }
 ];
@@ -73,6 +88,14 @@ function loadProducts() {
 
 function saveProducts(list) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+}
+
+function getProductImages(product) {
+  const images = Array.isArray(product.images) ? product.images : [];
+  const allImages = [...images, product.image]
+    .map((image) => String(image || "").trim())
+    .filter(Boolean);
+  return [...new Set(allImages)].slice(0, 3);
 }
 
 function getCategories(products) {
@@ -209,11 +232,12 @@ function setupCheckoutModal() {
     const subtotal = cart.reduce((sum, item) => {
       const product = products.find((p) => p.id === item.id);
       if (!product) return sum;
+      const productImages = getProductImages(product);
       if (checkoutProducts) {
         const row = document.createElement("div");
         row.className = "checkout-product";
         row.innerHTML = `
-          <img src="${product.image}" alt="${product.title}" />
+          <img src="${productImages[0]}" alt="${product.title}" />
           <div>
             <strong>${product.title}</strong>
             <span>${item.edition}</span>
@@ -302,6 +326,17 @@ function renderProductCards(grid, products) {
   products.forEach((product) => {
     const strike = getStrikePrice(product.price);
     const badge = getDiscountLabel(product.price);
+    const images = getProductImages(product);
+    const imageControls = images.length > 1
+      ? `<div class="product-image-controls" aria-label="Choose image for ${product.title}">
+          ${images
+            .map(
+              (image, index) =>
+                `<button type="button" class="product-image-dot${index === 0 ? " is-active" : ""}" data-image="${image}" aria-label="Show image ${index + 1}"></button>`
+            )
+            .join("")}
+        </div>`
+      : "";
     const card = document.createElement("div");
     card.className = "product-card";
     const editionOptions = product.editions
@@ -309,8 +344,9 @@ function renderProductCards(grid, products) {
       .join("");
     card.innerHTML = `
       <div class="product-image">
-        <img src="${product.image}" alt="${product.title}" />
+        <img src="${images[0]}" alt="${product.title}" />
         <span class="product-badge">${badge}</span>
+        ${imageControls}
       </div>
       <h3 class="product-title">${product.title}</h3>
       <div class="price-old">${formatPrice(strike)}</div>
@@ -327,6 +363,17 @@ function renderProductCards(grid, products) {
     button.addEventListener("click", () => {
       const edition = button.parentElement.querySelector(".edition-select").value;
       addToCart(button.dataset.add, edition);
+    });
+  });
+
+  grid.querySelectorAll(".product-image-dot").forEach((button) => {
+    button.addEventListener("click", () => {
+      const card = button.closest(".product-card");
+      const image = card.querySelector(".product-image img");
+      image.src = button.dataset.image;
+      card.querySelectorAll(".product-image-dot").forEach((dot) => {
+        dot.classList.toggle("is-active", dot === button);
+      });
     });
   });
 }
@@ -431,6 +478,7 @@ window.VoidApparelStore = {
   loadProducts,
   saveProducts,
   getCategories,
+  getProductImages,
   formatPrice,
   getStrikePrice,
   getDiscountLabel,

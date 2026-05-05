@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const priceInput = document.getElementById("priceInput");
   const categoryInput = document.getElementById("categoryInput");
   const imageInput = document.getElementById("imageInput");
+  const imageInput2 = document.getElementById("imageInput2");
+  const imageInput3 = document.getElementById("imageInput3");
   const topSellingInput = document.getElementById("topSellingInput");
   const saveButton = document.getElementById("saveButton");
   const cancelEdit = document.getElementById("cancelEdit");
@@ -75,7 +77,12 @@ document.addEventListener("DOMContentLoaded", () => {
     titleInput.value = product.title;
     priceInput.value = product.price;
     categoryInput.value = product.category;
-    imageInput.value = product.image;
+    const images = Array.isArray(product.images) && product.images.length > 0
+      ? product.images
+      : [product.image].filter(Boolean);
+    imageInput.value = images[0] || "";
+    imageInput2.value = images[1] || "";
+    imageInput3.value = images[2] || "";
     topSellingInput.checked = product.topSelling;
 
     form.querySelectorAll("fieldset input[type='checkbox']").forEach((input) => {
@@ -100,6 +107,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const products = loadProducts();
     const editions = getEditions();
+    const images = [imageInput.value, imageInput2.value, imageInput3.value]
+      .map((value) => value.trim())
+      .filter(Boolean);
     if (editions.length === 0) {
       showStatus("Select at least one edition");
       return;
@@ -111,7 +121,8 @@ document.addEventListener("DOMContentLoaded", () => {
       price: Number(priceInput.value),
       category: categoryInput.value.trim(),
       editions,
-      image: imageInput.value.trim(),
+      image: images[0],
+      images,
       topSelling: topSellingInput.checked
     };
 
