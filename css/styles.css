@@ -1349,6 +1349,19 @@ a {
   width: min(100%, 500px);
 }
 
+.contact-details {
+  display: grid;
+  gap: 8px;
+  width: min(100%, 500px);
+  margin-bottom: 22px;
+  color: #4e4738;
+  font-weight: 700;
+}
+
+.contact-details a {
+  color: #937d0e;
+}
+
 .contact-page .section {
   width: min(100%, 760px);
 }
