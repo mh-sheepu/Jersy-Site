@@ -258,6 +258,10 @@ a {
   height: 20px;
 }
 
+.mobile-bottom-nav {
+  display: none;
+}
+
 .cart-count {
   min-width: 20px;
   height: 20px;
@@ -1297,6 +1301,36 @@ a {
   margin-bottom: 16px;
 }
 
+.product-search {
+  display: none;
+  margin-bottom: 16px;
+  padding: 14px;
+  border: 1px solid rgba(147, 125, 14, 0.18);
+  border-radius: 14px;
+  background: rgba(255, 250, 240, 0.74);
+}
+
+.product-search.is-open {
+  display: grid;
+  gap: 8px;
+}
+
+.product-search label {
+  color: #211d14;
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+}
+
+.product-search input {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid rgba(147, 125, 14, 0.24);
+  border-radius: 999px;
+  background: #fffaf0;
+  color: #211d14;
+  padding: 10px 14px;
+}
+
 .muted {
   color: var(--muted);
 }
@@ -1497,6 +1531,10 @@ a {
 }
 
 @media (max-width: 640px) {
+  body {
+    padding-bottom: 74px;
+  }
+
   .site-header,
   .breadcrumb,
   .section,
@@ -1504,6 +1542,59 @@ a {
   .contact-page,
   .admin-page {
     padding: 16px;
+  }
+
+  .mobile-bottom-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 25;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    height: 64px;
+    background: #ffffff;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .mobile-bottom-nav a,
+  .mobile-bottom-nav button {
+    position: relative;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    color: #1b1a16;
+    cursor: pointer;
+  }
+
+  .mobile-bottom-nav a:last-child,
+  .mobile-bottom-nav button:last-child {
+    border-right: 0;
+  }
+
+  .mobile-bottom-nav svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .mobile-bottom-nav .active {
+    color: #937d0e;
+  }
+
+  .mobile-cart-count {
+    position: absolute;
+    top: 10px;
+    left: calc(50% + 5px);
+    min-width: 21px;
+    height: 21px;
+    padding: 0 6px;
+    background: #4b9bd8;
+    color: #ffffff;
+    font-size: 12px;
+    box-shadow: 0 2px 8px rgba(75, 155, 216, 0.35);
   }
 
   .breadcrumb {

@@ -163,14 +163,17 @@ function removeFromCart(key) {
 }
 
 function updateCartUI() {
-  const cartCount = document.getElementById("cartCount");
+  const cartCounts = document.querySelectorAll(".cart-count");
   const cartItems = document.getElementById("cartItems");
   const cartTotal = document.getElementById("cartTotal");
-  if (!cartCount || !cartItems || !cartTotal) return;
+  if (!cartItems || !cartTotal) return;
 
   const cart = loadCart();
   const products = loadProducts();
-  cartCount.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+  const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+  cartCounts.forEach((count) => {
+    count.textContent = totalQty;
+  });
 
   cartItems.innerHTML = "";
   let total = 0;
@@ -201,13 +204,17 @@ function updateCartUI() {
 
 function setupCartDrawer() {
   const drawer = document.getElementById("cartDrawer");
-  const openButton = document.getElementById("cartButton");
+  const openButtons = document.querySelectorAll("#cartButton, [data-cart-open]");
   const closeButton = document.getElementById("cartClose");
-  if (!drawer || !openButton || !closeButton) return;
+  if (!drawer || !openButtons.length || !closeButton) return;
 
-  openButton.addEventListener("click", () => {
+  const openDrawer = () => {
     drawer.classList.add("open");
     drawer.setAttribute("aria-hidden", "false");
+  };
+
+  openButtons.forEach((button) => {
+    button.addEventListener("click", openDrawer);
   });
 
   closeButton.addEventListener("click", () => {

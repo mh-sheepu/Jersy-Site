@@ -67,6 +67,34 @@
       <span>Home</span>
     </nav>
 
+    <nav class="mobile-bottom-nav" aria-label="Mobile quick navigation">
+      <a class="active" href="index.html" aria-label="Home">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M3 11.5 12 4l9 7.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M6.5 10.5V20h11v-9.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M10 20v-5h4v5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+      <a href="products.html" aria-label="Products">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+        </svg>
+      </a>
+      <button type="button" data-cart-open aria-label="Cart">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M6 7h14l-2 8H8L6 4H3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M9 20h.01M17 20h.01" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+        </svg>
+        <span class="cart-count mobile-cart-count">0</span>
+      </button>
+      <a href="products.html?search=open" aria-label="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.9" />
+          <path d="m16 16 4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" />
+        </svg>
+      </a>
+    </nav>
+
     <main>
       <section class="hero">
         <div class="hero-slider" id="heroSlider" aria-label="Featured collections">

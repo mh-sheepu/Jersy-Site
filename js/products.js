@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const clearFilters = document.getElementById("clearFilters");
   const filterToggle = document.getElementById("filterToggle");
   const filters = document.getElementById("filters");
+  const productSearch = document.getElementById("productSearch");
+  const productSearchInput = document.getElementById("productSearchInput");
+  const searchOpenButtons = document.querySelectorAll("[data-search-open]");
 
   if (!grid || !categoryFilters) return;
 
@@ -57,12 +60,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectedCategories = getSelectedValues("#categoryFilters input");
     const selectedEditions = getSelectedValues(".edition-filters input[type='checkbox']");
     const maxPrice = Number(priceRange.value);
+    const searchTerm = normalizeValue(productSearchInput ? productSearchInput.value : "");
 
     const filtered = products.filter((product) => {
       const productCategory = normalizeValue(product.category);
       const productEditions = Array.isArray(product.editions)
         ? product.editions.map(normalizeValue)
         : [];
+      const searchableText = [
+        product.title,
+        product.category,
+        ...(Array.isArray(product.editions) ? product.editions : [])
+      ]
+        .map(normalizeValue)
+        .join(" ");
       const productPrice = parsePrice(product.price);
       const categoryMatch =
         selectedCategories.length === 0 || selectedCategories.includes(productCategory);
@@ -70,7 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
         selectedEditions.length === 0 ||
         productEditions.some((edition) => selectedEditions.includes(edition));
       const priceMatch = productPrice <= maxPrice;
-      return categoryMatch && editionMatch && priceMatch;
+      const searchMatch = searchTerm === "" || searchableText.includes(searchTerm);
+      return categoryMatch && editionMatch && priceMatch && searchMatch;
     });
 
     grid.innerHTML = "";
@@ -161,6 +173,24 @@ document.addEventListener("DOMContentLoaded", () => {
       const isOpen = filters.classList.toggle("is-open");
       filterToggle.setAttribute("aria-expanded", String(isOpen));
     });
+  }
+
+  const openSearch = () => {
+    if (!productSearch || !productSearchInput) return;
+    productSearch.classList.add("is-open");
+    productSearchInput.focus();
+  };
+
+  searchOpenButtons.forEach((button) => {
+    button.addEventListener("click", openSearch);
+  });
+
+  if (productSearchInput) {
+    productSearchInput.addEventListener("input", renderProducts);
+  }
+
+  if (new URLSearchParams(window.location.search).get("search") === "open") {
+    openSearch();
   }
 
   attachFilterListeners();
