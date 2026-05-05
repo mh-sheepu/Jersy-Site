@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VoidApparelCo - Home</title>
+    <title>VoidApparelCo - About Us</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,7 +12,7 @@
     />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
-  <body class="home-page">
+  <body>
     <header class="site-header">
       <div class="header-left">
         <button class="nav-toggle" id="navToggle" aria-controls="mobileNav" aria-expanded="false">
@@ -21,9 +21,9 @@
       </div>
       <div class="brand">VoidApparelCo</div>
       <nav class="main-nav">
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html">Home</a>
         <a href="products.html">Products</a>
-        <a href="about.html">About</a>
+        <a href="about.html" class="active">About</a>
         <a href="contact.html">Contact</a>
         <a href="admin.html">Admin</a>
       </nav>
@@ -52,9 +52,9 @@
         <button class="nav-close" id="navClose" aria-label="Close menu">✕</button>
       </div>
       <div class="mobile-links">
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html">Home</a>
         <a href="products.html">Products</a>
-        <a href="about.html">About</a>
+        <a href="about.html" class="active">About</a>
         <a href="contact.html">Contact</a>
         <a href="admin.html">Admin</a>
       </div>
@@ -66,11 +66,12 @@
     </aside>
 
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <span>Home</span>
+      <a href="index.html">Home</a>
+      <span>About Us</span>
     </nav>
 
     <nav class="mobile-bottom-nav" aria-label="Mobile quick navigation">
-      <a class="active" href="index.html" aria-label="Home">
+      <a href="index.html" aria-label="Home">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path d="M3 11.5 12 4l9 7.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" />
           <path d="M6.5 10.5V20h11v-9.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" />
@@ -97,151 +98,41 @@
       </a>
     </nav>
 
-    <main>
-      <section class="hero">
-        <div class="hero-slider" id="heroSlider" aria-label="Featured collections">
-          <article class="hero-slide is-active">
-            <img
-              src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=1800&q=85"
-              alt="Football collection campaign"
-            />
-            <div class="hero-slide-copy">
-              <h1>FIFA 2026</h1>
-              <p>World Cup Collection</p>
-            </div>
-          </article>
-          <article class="hero-slide">
-            <img
-              src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1800&q=85"
-              alt="New season jersey collection"
-            />
-            <div class="hero-slide-copy">
-              <h1>NEW SEASON</h1>
-              <p>Home, away, and player editions</p>
-            </div>
-          </article>
-          <article class="hero-slide">
-            <img
-              src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1800&q=85"
-              alt="Top selling football kits"
-            />
-            <div class="hero-slide-copy">
-              <h1>TOP KITS</h1>
-              <p>Built for modern fans</p>
-            </div>
-          </article>
-          <button class="hero-arrow hero-arrow-prev" id="heroPrev" aria-label="Previous slide">
-            ‹
-          </button>
-          <button class="hero-arrow hero-arrow-next" id="heroNext" aria-label="Next slide">
-            ›
-          </button>
-          <div class="hero-dots" id="heroDots" aria-label="Choose slide"></div>
-        </div>
-      </section>
-
-      <section class="section" id="categories">
-        <div class="section-header">
-          <h2>Category</h2>
-          <a href="products.html">View all</a>
-        </div>
-        <div class="category-grid" id="categoryGrid"></div>
-      </section>
-
-      <section class="worldcup-banner">
-        <img
-          src="https://images.unsplash.com/photo-1759156207343-9dfefd8b7d33?auto=format&fit=crop&w=1800&q=85"
-          alt="Football stadium crowd"
-        />
-        <div class="worldcup-banner-content">
-          <span>World Cup FIFA 2026</span>
-          <h2>Country Kits Are Landing</h2>
-          <p>National team jerseys, player editions, and match-day essentials for the biggest football stage.</p>
-          <a class="primary-btn" href="products.html">Shop World Cup</a>
-        </div>
-      </section>
-
-      <section class="section" id="topSelling">
-        <div class="section-header">
-          <h2>Top Selling</h2>
-          <a href="products.html">Shop top picks</a>
-        </div>
-        <div class="product-grid" id="topSellingGrid"></div>
-      </section>
-
-      <section class="section" id="fifa2026">
-        <div class="section-header">
-          <h2>FIFA 2026</h2>
-          <a href="products.html">View collection</a>
-        </div>
-        <div class="product-grid" id="fifa2026Grid"></div>
-      </section>
-
-      <section class="visual-section" aria-label="Featured jersey collections">
-        <a class="visual-feature" href="products.html">
-          <img
-            src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1200&q=85"
-            alt="Football players in kit"
-          />
-          <div>
-            <span>Match Ready</span>
-            <h2>Player Edition Kits</h2>
-          </div>
-        </a>
-        <div class="visual-tiles">
-          <a class="visual-tile" href="products.html">
-            <img
-              src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=800&q=85"
-              alt="Football jersey details"
-            />
-            <span>Home Kits</span>
-          </a>
-          <a class="visual-tile" href="products.html">
-            <img
-              src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?auto=format&fit=crop&w=800&q=85"
-              alt="Football stadium"
-            />
-            <span>Away Kits</span>
-          </a>
-        </div>
-      </section>
-
-      <section class="highlight">
-        <div class="highlight-content">
-          <p class="eyebrow">Spotlight</p>
-          <h2>FIFA 2026</h2>
+    <main class="about-page">
+      <section class="about-hero">
+        <div>
+          <span>About VoidApparelCo</span>
+          <h1>Football kits for fans who care about the details.</h1>
           <p>
-            A bold new era of football kits. Lightweight mesh, reflective crest, and a
-            silhouette that stands out under the lights.
+            VoidApparelCo is a Dhaka-based football apparel store focused on
+            stylish club and nation kits, easy ordering, and friendly support.
           </p>
-          <a class="primary-btn" href="products.html">See the drop</a>
-        </div>
-        <div class="highlight-media">
-          <img
-            src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=900&q=85"
-            alt="Football kit campaign"
-          />
         </div>
       </section>
 
-      <section class="section" id="faq">
-        <div class="section-header">
-          <h2>FAQ</h2>
-        </div>
-        <div class="faq-list">
-          <details>
-            <summary>How do I choose my size?</summary>
-            <p>Use the size guide on each product page. Player editions run slimmer.</p>
-          </details>
-          <details>
-            <summary>Can I return a jersey?</summary>
-            <p>Returns are accepted within 14 days for unused items.</p>
-          </details>
-          <details>
-            <summary>Do you ship internationally?</summary>
-            <p>Yes, international shipping is available at checkout.</p>
-          </details>
-        </div>
+      <section class="about-grid">
+        <article>
+          <h2>Who We Are</h2>
+          <p>
+            We help fans find clean, modern football jerseys for everyday wear,
+            match days, gifts, and collections. Our selection is built around
+            popular clubs, national teams, and fan-favorite editions.
+          </p>
+        </article>
+        <article>
+          <h2>What We Value</h2>
+          <p>
+            We keep the shopping experience simple: clear product details,
+            responsive communication, and support from order to delivery.
+          </p>
+        </article>
+        <article>
+          <h2>Where We Are</h2>
+          <p>
+            We are based in Mirpur, Dhaka and serve customers who want reliable
+            football apparel with quick, direct contact.
+          </p>
+        </article>
       </section>
     </main>
 
@@ -286,7 +177,7 @@
             <a href="#">Order Tracking</a>
             <a href="#">Payment</a>
             <a href="#">Shipping</a>
-            <a href="#faq">FAQ</a>
+            <a href="#">FAQ</a>
           </div>
           <div>
             <h4>Consumer Policy</h4>
@@ -363,6 +254,5 @@
     </div>
 
     <script src="js/app.js"></script>
-    <script src="js/products.js"></script>
   </body>
 </html>
