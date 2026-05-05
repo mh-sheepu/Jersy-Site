@@ -1576,7 +1576,9 @@ a {
 .login-page {
   min-height: 100vh;
   display: grid;
+  align-content: center;
   place-items: center;
+  gap: 18px;
   padding: 24px;
 }
 
@@ -1632,6 +1634,12 @@ a {
   color: #937d0e;
   font-weight: 700;
   text-align: center;
+}
+
+.login-credit {
+  padding: 0;
+  border-top: 0;
+  color: #6c624e;
 }
 
 .simple-panel {
