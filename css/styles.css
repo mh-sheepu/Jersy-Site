@@ -269,7 +269,7 @@ a {
   z-index: 24;
   width: 58px;
   height: 58px;
-  display: grid;
+  display: none;
   place-items: center;
   border-radius: 50%;
   background: #25d366;
@@ -1736,6 +1736,7 @@ a {
     bottom: 84px;
     width: 52px;
     height: 52px;
+    display: grid;
   }
 
   .whatsapp-float svg {
