@@ -534,6 +534,141 @@ function setupHeroSlider() {
   startAutoplay();
 }
 
+function setupChatBox() {
+  const toggle = document.getElementById("chatToggle");
+  const box = document.getElementById("chatBox");
+  const closeButton = document.getElementById("chatClose");
+  const sendButton = document.getElementById("chatSend");
+  const clearButton = document.getElementById("chatClear");
+  const input = document.getElementById("userInput");
+  const chatBody = document.getElementById("chatBody");
+  const quick = document.getElementById("chatQuick");
+  const marketing = document.querySelector(".chat-marketing");
+  if (!toggle || !box || !closeButton || !sendButton || !input || !chatBody || !clearButton) return;
+
+  const getReply = (question) => {
+    if (question.includes("hi") || question.includes("hello") || question.includes("hey")) {
+      return "Hello! How can I help you today?";
+    }
+    if (question.includes("thanks") || question.includes("thank you")) {
+      return "You are welcome!";
+    }
+    if (question.includes("welcome")) {
+      return "Glad to help!";
+    }
+    if (question.includes("quality")) {
+      return "Our jerseys are Thailand quality with premium dry-fit fabric.";
+    }
+    if (question.includes("price")) {
+      return "Jersey prices start from 450 BDT depending on design and quality.";
+    }
+    if (question.includes("delivery charge") || question.includes("charge")) {
+      return "Delivery charge is 60 BDT inside Dhaka and 120 BDT outside Dhaka.";
+    }
+    if (question.includes("offer") || question.includes("online")) {
+      return "Yes! Online payments Free Delivery.";
+    }
+    if (question.includes("how many days") || question.includes("delivery take")) {
+      return "Delivery takes 1-2 days inside Dhaka and 3-5 days outside Dhaka.";
+    }
+    return "Please ask jersey related questions.";
+  };
+
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour >= 5 && hour < 12) {
+      return "Good morning! How can I help you today?";
+    }
+    if (hour >= 12 && hour < 17) {
+      return "Good afternoon! How can I help you today?";
+    }
+    if (hour >= 17 && hour < 22) {
+      return "Good evening! How can I help you today?";
+    }
+    return "Hello! How can I help you today?";
+  };
+
+  const addMessage = (text, sender) => {
+    const msg = document.createElement("div");
+    msg.className = `message ${sender}`;
+    msg.innerText = text;
+    chatBody.appendChild(msg);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  };
+
+  const sendMessage = (overrideText) => {
+    const text = input.value.trim();
+    const outgoing = (overrideText || text).trim();
+    if (!outgoing) return;
+    addMessage(outgoing, "user");
+    const reply = getReply(outgoing.toLowerCase());
+    window.setTimeout(() => addMessage(reply, "bot"), 500);
+    input.value = "";
+  };
+
+  let greeted = false;
+  const resetChat = () => {
+    chatBody.innerHTML = "";
+    if (quick) {
+      chatBody.appendChild(quick);
+    }
+    if (marketing) {
+      chatBody.appendChild(marketing);
+    }
+    if (clearButton) {
+      chatBody.appendChild(clearButton);
+    }
+    greeted = false;
+  };
+  const openChat = () => {
+    box.classList.add("open");
+    box.setAttribute("aria-hidden", "false");
+    if (!greeted) {
+      addMessage(getGreeting(), "bot");
+      greeted = true;
+    }
+    if (quick && !chatBody.contains(quick)) {
+      chatBody.appendChild(quick);
+    }
+    if (marketing && !chatBody.contains(marketing)) {
+      chatBody.appendChild(marketing);
+    }
+    if (clearButton && !chatBody.contains(clearButton)) {
+      chatBody.appendChild(clearButton);
+    }
+  };
+
+  const closeChat = () => {
+    box.classList.remove("open");
+    box.setAttribute("aria-hidden", "true");
+  };
+
+  toggle.addEventListener("click", () => {
+    if (box.classList.contains("open")) {
+      closeChat();
+    } else {
+      openChat();
+    }
+  });
+  closeButton.addEventListener("click", closeChat);
+  sendButton.addEventListener("click", () => sendMessage());
+  clearButton.addEventListener("click", resetChat);
+  input.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      sendMessage();
+    }
+  });
+  if (quick) {
+    quick.querySelectorAll("button[data-question]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const question = button.dataset.question || "";
+        if (!question) return;
+        sendMessage(question);
+      });
+    });
+  }
+}
+
 window.VoidApparelStore = {
   loadProducts,
   saveProducts,
@@ -559,4 +694,5 @@ document.addEventListener("DOMContentLoaded", () => {
   setupMobileNav();
   setupHeroSlider();
   setupCheckoutModal();
+  setupChatBox();
 });
